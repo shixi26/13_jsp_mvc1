@@ -96,12 +96,49 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally { 
-			if (rs != null) try {rs.close();} 	 catch (SQLException e) {e.printStackTrace();}
-			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
-			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+			if (rs != null)		try {rs.close();} 	 catch (SQLException e) {e.printStackTrace();}
+			if (pstmt != null)  try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) 	try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
 		}
 		
 		return isValidMember;
+		
+	}
+	
+	// Leave DAO
+	public boolean leaveMember(String id , String pwd) {
+		
+		boolean isLeaveMember = false;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("SELECT * FROM MEMBER WHERE ID = ? AND PASSWD = ?"); //db 비번passwd로저장되어있옹..
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				pstmt = conn.prepareStatement("DELETE FROM MEMBER WHERE ID = ?"); //delete쿼리문다시보기
+				pstmt.setString(1,id);
+				pstmt.executeUpdate();
+				isLeaveMember = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (rs != null) 	try {rs.close();} 	 catch (SQLException e) {e.printStackTrace();}
+			if (pstmt != null)  try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) 	try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}		
+		return isLeaveMember;
+		
+	}
+	
+	// 9/6완성하긔,,,
+	public boolean updateMember() {
 		
 	}
 

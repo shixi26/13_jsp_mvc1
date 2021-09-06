@@ -20,9 +20,9 @@
 		}
 		else{
 	%>		
-		<p><a href="#">Delete!</a></p>
-		<p><a href="#">Modify!</a></p>
-		<p><a href="#">Logout!</a></p>
+		<p><a href="03_delete.jsp">Delete!</a></p>
+		<p><a href="05_update.jsp">Modify!</a></p>
+		<p><a href="09_logout.jsp">Logout!</a></p>
 	<%
 		}
 	
