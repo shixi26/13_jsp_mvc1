@@ -1,3 +1,4 @@
+<%@page import="step2_00_loginEx.MemberDto"%>
 <%@page import="step2_00_loginEx.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
 	%>
 		<script>
 			alert("Information has changed.");
-			location.herf = "00_main.jsp";
+			location.href = "00_main.jsp";
 		</script>
 	<%
 		}

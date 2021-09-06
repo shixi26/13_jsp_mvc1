@@ -138,7 +138,33 @@ public class MemberDao {
 	}
 	
 	// 9/6완성하긔,,,
-	public boolean updateMember() {
+	public boolean updateMember(MemberDto mdto) {
+		
+		boolean isUpdateMember = false;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("SELECT * FROM MEMBER WHERE ID = ? AND PASSWD = ?");
+			pstmt.setString(1, mdto.getId());
+			pstmt.setString(2, mdto.getPasswd());
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				pstmt = conn.prepareStatement("UPDATE MEMBER SET NAME=? WHERE ID=?");
+				pstmt.setString(1, mdto.getName());
+				pstmt.setString(2, mdto.getId());
+				pstmt.executeUpdate();
+				isUpdateMember = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)		try {rs.close();} 	 catch (SQLException e) {e.printStackTrace();}
+			if (pstmt != null)  try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) 	try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
+		return isUpdateMember;
 		
 	}
 
