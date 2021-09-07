@@ -150,7 +150,7 @@ public class MemberDao {
 			
 			rs = pstmt.executeQuery();
 			
-			if (rs.next()) {
+			if (rs.next()) { // 이름수정
 				pstmt = conn.prepareStatement("UPDATE MEMBER SET NAME=? WHERE ID=?");
 				pstmt.setString(1, mdto.getName());
 				pstmt.setString(2, mdto.getId());
