@@ -1,3 +1,6 @@
+<%@page import="step3_00_boardEx.BoardDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="step3_00_boardEx.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +19,21 @@
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
+		<%
+			ArrayList<BoardDto> boardList = BoardDao.getInstance().getAllBoard(); 
+			for (BoardDto bdto : boardList) { // 
+		%>
+			<tr>
+				<td><%=bdto.getNum() %></td>
+				<td><%=bdto.getSubject() %></td>
+				<td><%=bdto.getWriter() %></td>
+				<td><%=bdto.getRegDate() %></td>
+				<td><%=bdto.getReadCount() %></td>
+			</tr>
+		<%		
+			}
+		%>
+		
 		<tr>
 			<td colspan="5">
 				<input type="button" value="글쓰기" onclick="location.href='02_bWrite.jsp'">
