@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>update</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 
 	<form method="post" action="06_updatePro.jsp">
 	<fieldset>
-		<legend>'<%=id %>' 정보수정</legend>
+		<legend>'<%=id %>' �젙蹂댁닔�젙</legend>
 		<p>Id: <input type="text" name="id" value="<%=id %>" readonly></p>
 		<p>Password: <input type="password" name="passwd"></p>
 		<p>Name: <input type="text" name="name"></p>

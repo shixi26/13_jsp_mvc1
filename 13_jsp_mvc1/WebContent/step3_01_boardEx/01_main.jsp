@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>main</title>
 </head>
 <body>
-	<%-- mysql¿¡¼­ run
+	<%-- mysqlì—ì„œ run
 
 		CREATE DATABASE STEP3_BOARD_EX;
 		
@@ -26,7 +26,7 @@
 		SELECT * FROM BOARD;
 	
 	--%>
-	<img src="../img/jsp.PNG" alt="jsp½Éº¼" width="400px" height="200px"><br><br><br>
-	<input type="button" value="°Ô½ÃÆÇ º¸±â" onclick="location.href='04_bList.jsp'">
+	<img src="../img/jsp.PNG" alt="jspì‹¬ë³¼" width="400px" height="200px"><br><br><br>
+	<input type="button" value="ê²Œì‹œíŒ ë³´ê¸°" onclick="location.href='04_bList.jsp'">
 </body>
 </html>

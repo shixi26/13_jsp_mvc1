@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class BoardDao {
 	
@@ -36,7 +37,32 @@ public class BoardDao {
 		
 	}
 	
-	public insertBoard () {
+	// 게시글을 추가하는 DAO -넣기만하면되니까void
+	
+	public void insertBoard (BoardDto boardDto) {
+		
+		try {
+			
+			conn = getConnection();
+			
+			String sql = "INSERT INTO BOARD(WRITER,EMAIL,SUBJECT,PASSWORD,REG_DATE,READ_COUNT,CONTENT)";
+				   sql += "VALUES(?,?,?,?,NOW(),0,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardDto.getWriter());
+			pstmt.setString(2, boardDto.getEmail());
+			pstmt.setString(3, boardDto.getSubject());
+			pstmt.setString(4, boardDto.getPassword());
+			pstmt.setString(5, boardDto.getContent()); // ?가 5번째 >content 
+			pstmt.executeUpdate();
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
 		
 	}
 }

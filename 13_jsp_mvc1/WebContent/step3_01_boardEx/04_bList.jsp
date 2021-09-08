@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>bList</title>
 </head>
 <body>
 
-	<h1>°Ô½Ã±Û º¸±â</h1>
+	<h1>ê²Œì‹œê¸€ ë³´ê¸°</h1>
 	<table border="1">
 		<tr>
-			<th>¹øÈ£</th>
-			<th>Á¦¸ñ</th>
-			<th>ÀÛ¼ºÀÚ</th>
-			<th>ÀÛ¼ºÀÏ</th>
-			<th>Á¶È¸¼ö</th>
+			<th>ë²ˆí˜¸</th>
+			<th>ì œëª©</th>
+			<th>ìž‘ì„±ìž</th>
+			<th>ìž‘ì„±ì¼</th>
+			<th>ì¡°íšŒìˆ˜</th>
 		</tr>
 		<tr>
 			<td colspan="5">
-				<input type="button" value="±Û¾²±â" onclick="location.href='02_bWrite.jsp'">
+				<input type="button" value="ê¸€ì“°ê¸°" onclick="location.href='02_bWrite.jsp'">
 			</td>
 			
 		</tr>

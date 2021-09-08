@@ -1,39 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>bWrite</title>
 </head>
 <body>
 	
 	<form method="post" action="03_bWritePro.jsp">
-		<h2>�Խñ� ����</h2>
+		<h2>게시글 쓰기</h2>
 		<table border="1">
 			<tr>
-				<td>�ۼ���</td>
+				<td>작성자</td>
 				<td><input type="text" name="writer"></td>
 			</tr>
 			<tr>
-				<td>����</td>
+				<td>제목</td>
 				<td><input type="text" name="subject"></td>
 			</tr>
 			<tr>
-				<td>�̸���</td>
+				<td>이메일</td>
 				<td><input type="email" name="email"></td>
 			</tr>
 			<tr>
-				<td>��й�ȣ</td>
+				<td>비밀번호</td>
 				<td><input type="password" name="password"></td>
 			</tr>
 			<tr>
-				<td>�۳���</td>
+				<td>글내용</td>
 				<td><textarea name="content"></textarea></td>
 			</tr>
 		</table>
 			<p>
-			<input type="submit" value="�۾���">
-			<input type="button" value="��ü�Խñۺ���" onclick="location.href='04_bList.jsp'">
+			<input type="submit" value="글쓰기">
+			<input type="button" value="전체게시글보기" onclick="location.href='04_bList.jsp'">
 			</p>
 	</form>
 	

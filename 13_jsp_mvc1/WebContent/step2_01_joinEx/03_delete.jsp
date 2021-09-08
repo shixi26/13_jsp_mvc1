@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>delete</title>
 </head>
 <body>
 
 	<%
-		String id = (String)session.getAttribute("id"); //¿¬°áÁ¤º¸¸¦ Áö¼ÓÇÒ¼öÀÖ¿Ë..
+		String id = (String)session.getAttribute("id"); //ì—°ê²°ì •ë³´ë¥¼ ì§€ì†í• ìˆ˜ìˆì˜¹..
 	%>
 
 	<form method="post" action="04_deletePro.jsp">
 		<fieldset>
-			<legend>'<%=id %>' È¸¿øÅ»Åğ</legend>
-			<p>Id : <input type="text" name="id" value="<%=id %>" readonly></p><!-- readonlyÀĞ±âÀü¿ë -->
+			<legend>'<%=id %>' íšŒì›íƒˆí‡´</legend>
+			<p>Id : <input type="text" name="id" value="<%=id %>" readonly></p><!-- readonlyì½ê¸°ì „ìš© -->
 			<p>Password : <input type="password" name="pwd"></p>
 			<p><input type="submit" value="delete"></p>
 		</fieldset>

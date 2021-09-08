@@ -1,9 +1,9 @@
 <%@page import="step2_00_loginEx.MemberDao"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>deletePro</title>
 </head>
 <body>
@@ -13,12 +13,12 @@
 		request.setCharacterEncoding("utf-8");
 	
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd"); // º¯¼ö¿¡ ´ã´Â°Ç ÇÊ¼ö´Â ¾Æ´Ï¾ß
+		String pwd = request.getParameter("pwd"); // ë³€ìˆ˜ì— ë‹´ëŠ”ê±´ í•„ìˆ˜ëŠ” ì•„ë‹ˆì•¼
 	
 		boolean isLeave = MemberDao.getInstance().leaveMember(id,pwd);
 		
 		if (isLeave) {
-			session.invalidate(); //¼¼¼ÇÁ¾·ásession.remove 
+			session.invalidate(); //ì„¸ì…˜ì¢…ë£Œsession.remove 
 	%>
 		<script>
 			alert("Your account has been deleted succeessfully.");

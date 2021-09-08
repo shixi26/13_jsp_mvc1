@@ -1,9 +1,9 @@
 <%@page import="step3_00_boardEx.BoardDao"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>bWritePro</title>
 </head>
 <body>
@@ -21,8 +21,8 @@
 	%>
 	
 	<script>
-		alert("µî·ÏµÇ¾ú½À´Ï´Ù.");
-		location.hreff ="04_bList.jsp";
+		alert("ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		location.href ="04_bList.jsp";
 	</script>
 </body>
 </html>
