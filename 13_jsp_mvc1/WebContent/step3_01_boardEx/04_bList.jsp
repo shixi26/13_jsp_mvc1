@@ -25,7 +25,7 @@
 		%>
 			<tr>
 				<td><%=bdto.getNum() %></td>
-				<td><%=bdto.getSubject() %></td>
+				<td><a href="05_bInfo.jsp?num=<%=bdto.getNum() %>"><%=bdto.getSubject() %></a></td>
 				<td><%=bdto.getWriter() %></td>
 				<td><%=bdto.getRegDate() %></td>
 				<td><%=bdto.getReadCount() %></td>

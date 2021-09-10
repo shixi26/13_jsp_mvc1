@@ -67,7 +67,7 @@ public class BoardDao {
 	}
 	
 	// 전체 게시글을 조회하는 DAO 
-	public  ArrayList<BoardDto> getAllBoard() { // BoardDto는 한줄만 해당>배열이용
+	public ArrayList<BoardDto> getAllBoard() { // BoardDto는 한줄만 해당>배열이용
 		
 		ArrayList<BoardDto> boardList = new ArrayList<BoardDto>();
 		BoardDto bdto = null;
@@ -104,5 +104,137 @@ public class BoardDao {
 		}
 		
 		return boardList; // 한줄한줄읽어온거bdto담은baordList 화면에 데이터 뿌려주긔
+	}
+	
+	// 하나의 게시글을 조회하는 DAO
+	public BoardDto getOneBoard(int num) {
+		
+		BoardDto bdto = new BoardDto();
+		
+		try {
+			
+			// 조회수 올리기
+			conn = getConnection();
+			pstmt = conn.prepareStatement("UPDATE BOARD * SET READ_COUNT = READ_COUNT + 1 WHERE NUM = ?");
+			pstmt.setInt(1, num);
+			
+			conn = getConnection();
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				bdto.setNum(rs.getInt("NUM"));
+				bdto.setWriter(rs.getString("WRITER"));
+				bdto.setEmail(rs.getString("EMAIL"));
+				bdto.setSubject(rs.getString("SUBJECT"));
+				bdto.setPassword(rs.getString("PASSWORD"));
+				bdto.setRegDate(rs.getDate("REG_DATE"));
+				bdto.setReadCount(rs.getInt("READ_COUNT"));
+				bdto.setContent(rs.getString("CONTENT"));
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+			if (rs != null) try {rs.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		return bdto;
+	}
+	
+	// 수정하기(조회DAO에서 update문만지웠어)
+	public BoardDto getOneUpdateBoard(int num) {
+		
+		BoardDto bdto = new BoardDto();
+		
+		try {
+			
+			conn = getConnection();
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				bdto.setNum(rs.getInt("NUM"));
+				bdto.setWriter(rs.getString("WRITER"));
+				bdto.setEmail(rs.getString("EMAIL"));
+				bdto.setSubject(rs.getString("SUBJECT"));
+				bdto.setPassword(rs.getString("PASSWORD"));
+				bdto.setRegDate(rs.getDate("REG_DATE"));
+				bdto.setReadCount(rs.getInt("READ_COUNT"));
+				bdto.setContent(rs.getString("CONTENT"));
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+			if (rs != null) try {rs.close();}  catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		return bdto;
+	}
+	
+	// 비밀번호를 인증하는 DAO
+	public boolean validMemberCheck() {
+		
+		boolean isValidMember = false;
+		
+		BoardDto bdto = new BoardDto();
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("SELECT * FROM BOARD WHERE NUM =? AND PASSWORD = ?");
+			pstmt.setInt(1, bdto.getNum());
+			pstmt.setString(2, bdto.getPassword());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) isValidMember = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+			if (rs != null) try {rs.close();}  catch (SQLException e) {e.printStackTrace();}
+		}	
+		
+		return isValidMember;
+		
+	}
+	
+	
+	// 게시글을 수정하는 DAO
+	public boolean updateBoard(BoardDto bdto) {
+		
+		boolean isUpdate = false;
+		
+		try {
+			
+			if (validMemberCheck(bdto)) {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("UPDATE BOARD SET SUBJECT = ? , CONTENT = ? WHERE NUM = ?");
+				pstmt.setString(1, bdto.getSubject());
+				pstmt.setString(2, bdto.getContent());
+				pstmt.setInt(3, bdto.getNum());
+				pstmt.executeUpdate();
+				isUpdate = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
+			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
+		}	
+		
+		
+		return isUpdate;
 	}
 }
