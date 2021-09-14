@@ -1,7 +1,6 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="step4_00_boardEx.BoardDto"%>
 <%@page import="step4_00_boardEx.BoardDao"%>
-<%@page import="java.util.ArrayList"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
