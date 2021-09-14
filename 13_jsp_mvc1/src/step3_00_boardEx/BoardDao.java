@@ -138,9 +138,9 @@ public class BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally { 
+			if (rs != null) try {rs.close();}  catch (SQLException e) {e.printStackTrace();}
 			if (pstmt != null) try {pstmt.close();} catch (SQLException e) {e.printStackTrace();}
 			if (conn != null) try {conn.close();}  catch (SQLException e) {e.printStackTrace();}
-			if (rs != null) try {rs.close();}  catch (SQLException e) {e.printStackTrace();}
 		}
 		
 		return bdto;
@@ -182,11 +182,9 @@ public class BoardDao {
 	}
 	
 	// 비밀번호를 인증하는 DAO
-	public boolean validMemberCheck() {
+	public boolean validMemberCheck(BoardDto bdto) {
 		
 		boolean isValidMember = false;
-		
-		BoardDto bdto = new BoardDto();
 		
 		try {
 			conn = getConnection();
