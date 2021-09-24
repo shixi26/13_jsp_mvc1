@@ -15,7 +15,7 @@ public class BoardDao {
 		return instance;
 	}
 	
-	private Connection conn;
+	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
